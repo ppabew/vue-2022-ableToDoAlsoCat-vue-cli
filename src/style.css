@@ -1,3 +1,11 @@
 .router-link-active {
   background: #e25193;
 }
+
+table {
+  width: 300px; /* 정렬하려는 요소의 넓이를 반드시 지정 */
+  margin: 0 auto;
+}
+table, th, td {
+  border: 1px solid black;
+}

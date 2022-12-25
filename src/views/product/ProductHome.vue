@@ -6,7 +6,13 @@
 
 <script>
 export default {
-  name: "ProductHome"
+  name: "ProductHome",
+  props: {
+    hid: Number
+  },
+  created: function() {
+    console.log('숫자 : ' + this.hid)
+  }
 }
 </script>
 

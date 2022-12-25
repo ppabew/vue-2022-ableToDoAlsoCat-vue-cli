@@ -6,6 +6,7 @@ import ProductList from "./views/ProductList.vue";
 import ProductHome from "./views/product/ProductHome.vue";
 import Review from "./views/product/Review.vue";
 import ReviewDetail from "./views/product/ReviewDetail.vue";
+import review from "./views/product/Review.vue";
 
 Vue.use(VueRouter);
 
@@ -28,23 +29,40 @@ const router = new VueRouter({
       children: [
         {
           name: 'product-home',
-          path: '',
-          component: ProductHome
+          path: ':hid',
+          component: ProductHome,
+          props: route => ({
+            hid: Number(route.params.hid)
+          })
         },
         {
-          name: 'product-review',
-          path: 'review',
-          component: Review
+          name: 'review',
+          path: 'review/:mid',
+          component: Review,
+          props: route => ({
+            mid: Number(route.params.mid)
+          })
+          //   children: [
+          //     {
+          //       name: 'review-detail',
+          //       path: 'review-detail/:rid',
+          //       component: ReviewDetail,
+          //       props: route => ({
+          //         rid: Number(route.params.rid)
+          //       })
+          //     },
+          //   ]
+          // },
         },
         {
           name: 'review-detail',
-          path: 'review/:rid',
+          path: 'review-detail/:rid',
           component: ReviewDetail,
           props: route => ({
+            mid: Number(route.params.mid),
             rid: Number(route.params.rid)
           })
         },
-
       ]
     }
   ]

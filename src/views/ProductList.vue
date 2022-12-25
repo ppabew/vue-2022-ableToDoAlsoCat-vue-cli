@@ -14,7 +14,9 @@ import products from "../api/products";
 export default {
   name: "ProductList",
   computed: {
-    list: () => products.fetch()
+    list: () => {
+      return products.fetch()
+    }
   }
 }
 </script>

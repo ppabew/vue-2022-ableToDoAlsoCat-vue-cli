@@ -1,11 +1,14 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import product from "../store/product.js";
+import reviews from "../store/reviews";
+
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
   modules: {
-    product
+    product,
+    reviews
   },
   state: {
     message: '초기 메시지!!'

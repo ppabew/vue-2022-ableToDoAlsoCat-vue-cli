@@ -1,10 +1,9 @@
 <template>
   <div class="review-list">
     <h1>리뷰 목록</h1>
-    <!-- 구현 방법은 상품 목록과 거의 같습니다. -->
     <ul>
-      <li v-for="{rid, user} in list" :key="rid">
-        {{user}}
+      <li v-for="{rid, user} in reviewList" :key="rid">
+        <router-link :to="{name: `review-detail`, params: {mid: `${mid}`,rid: `${rid}`}}">리뷰 번호:{{rid}} 사용자:{{user}}</router-link>
       </li>
     </ul>
   </div>
@@ -12,12 +11,23 @@
 
 <script>
 import reviews from "../../api/reviews";
+
 export default {
   name: "Review",
-  computed: {
-    list: () => reviews.fetch()
-  }
-}
+  data() {
+    return {
+      reviewList: []
+    }
+  },
+  props: {
+    mid: {
+      type: Number
+    }
+  },
+  created: function() {
+    this.reviewList = reviews.fetch(this.mid);
+  },
+};
 </script>
 
 <style scoped>

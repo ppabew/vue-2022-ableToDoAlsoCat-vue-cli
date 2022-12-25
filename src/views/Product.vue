@@ -25,8 +25,8 @@
     </div>
     <div class="products">
       <nav class="nav">
-        <router-link :to="{ name: 'product-home' }" exact>상품 상세</router-link>
-        <router-link :to="{ name: 'product-review' }">리뷰</router-link>
+        <router-link :to="{ name: 'product-home', params: { hid: 2 } }" exact>상품 상세</router-link>
+        <router-link :to="{ name: 'review', params: { mid: `${id}`} }">리뷰</router-link>
       </nav>
       <router-view></router-view>
     </div>
@@ -53,6 +53,7 @@ export default {
   watch: {
     id: {
       handler() {
+        console.log(this.id)
         products.asyncFind(this.id, item => {
           this.item = item
         })
